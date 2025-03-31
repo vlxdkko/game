@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Тестовое мини-приложение Telegram</title>
+  <!-- Подключаем скрипт Telegram Web Apps -->
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+      background: #f5f5f5;
+    }
+    h1 {
+      color: #0088cc;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #0088cc;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #006699;
+    }
+  </style>
+</head>
+<body>
+  <h1>Добро пожаловать в тестовую версию!</h1>
+  <p id="user-info">Загрузка информации...</p>
+  <button id="startButton">Начать игру</button>
+
+  <script>
+    // Инициализируем Telegram Web Apps API
+    const tg = window.Telegram.WebApp;
+    tg.ready();
+
+    // Отобразим имя пользователя, если оно доступно
+    const userInfoElement = document.getElementById("user-info");
+    if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
+      userInfoElement.innerText = "Привет, " + tg.initDataUnsafe.user.first_name + "!";
+    } else {
+      userInfoElement.innerText = "Привет, гость!";
+    }
+
+    // Пример простой логики: при нажатии на кнопку запускается тестовое действие
+    document.getElementById("startButton").addEventListener("click", () => {
+      // Здесь можно подключить основную логику игры, например, переход к игровому процессу
+      alert("Игра запущена! Здесь будет ваша логика игрового процесса.");
+    });
+  </script>
+</body>
+</html>
